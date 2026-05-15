@@ -187,23 +187,8 @@ pip-log.txt
 #                          QUICK START & GUIDE FILES
 ################################################################################
 
-# Quick start guides (for local use only, not needed in repo)
-RUN_ME.txt
-START_HERE.txt
-QUICK_START_STEPS.txt
-SHELL_SCRIPT_GUIDE.txt
-SHELL_SCRIPT_QUICK_DEMO.txt
-HOW_TO_STOP.txt
-COMPLETED_WORK_SUMMARY.txt
-PROJECT_SUMMARY.md
-STEP1_IMPLEMENTATION.md
-STEP2_IMPLEMENTATION.md
-STEP3_IMPLEMENTATION.md
-STEP4_IMPLEMENTATION.md
-
-QUICK_REFERENCE.md
-SHELL_SCRIPT_QUICK_DEMO.txt
-START_HERE.txt
+# Guide folder - local guides and implementation docs (not needed in repo)
+guide/
 
 
 

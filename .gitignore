@@ -1,0 +1,210 @@
+# FocusGuardian - .gitignore
+# Files to exclude from version control
+
+################################################################################
+#                          PYTHON ARTIFACTS
+################################################################################
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# pytest cache
+.pytest_cache/
+*.pytest_cache/
+
+# Coverage
+.coverage
+htmlcov/
+
+
+################################################################################
+#                          SYSTEM FILES
+################################################################################
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+Thumbs.db
+*.lnk
+
+# Linux
+.directory
+
+
+################################################################################
+#                          LOGS & TEMPORARY FILES
+################################################################################
+
+# Log files
+*.log
+logs/
+/logs/
+
+# Temporary files
+tmp/
+/tmp/
+*.tmp
+*.temp
+
+# PID files
+*.pid
+*.pid.lock
+
+# Process files
+.process
+
+
+################################################################################
+#                          IDE & EDITOR FILES
+################################################################################
+
+# VS Code
+.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# PyCharm
+.idea/
+*.iml
+.idea/workspace.xml
+.idea/tasks.xml
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.vim/
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+
+################################################################################
+#                          BACKUP & RESTORE FILES
+################################################################################
+
+# Hosts file backups
+*.hosts.bak
+*.hosts.backup
+/etc/hosts.focusguardian.backup*
+
+# Restore backups
+*.restore
+*.bak
+*.backup
+*.old
+
+
+################################################################################
+#                          ENVIRONMENT & CONFIGURATION
+################################################################################
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+
+# Configuration
+config.local.py
+settings.local.py
+
+
+################################################################################
+#                          SYSTEM SPECIFIC
+################################################################################
+
+# macOS hosts file modifications (don't sync these)
+/etc/hosts
+
+# macOS plist backups
+*.plist.bak
+*.plist.backup
+
+# Package manager caches
+npm-debug.log
+yarn-error.log
+pip-log.txt
+
+
+################################################################################
+#                          BUILD ARTIFACTS
+################################################################################
+
+# macOS app bundles
+*.app/
+*.bundle/
+
+# Python packages
+*.whl
+*.tar.gz
+
+
+################################################################################
+#                          OPTIONAL: RUNTIME FILES
+################################################################################
+
+# Uncomment if you want to ignore these:
+# /tmp/focusguardian_server.log    # Server logs
+# /tmp/focusguardian_server.pid    # Server PID
+# blocked_sites.txt               # User customizations (keep if shared)
+
+
+################################################################################
+#                          FILE EXPLANATIONS
+################################################################################
+#
+# __pycache__/ - Python bytecode caches (auto-generated)
+# *.pyc - Compiled Python files (auto-generated)
+# .DS_Store - macOS system files (auto-generated)
+# *.log - Log files (auto-generated at runtime)
+# venv/ - Virtual environment (local development)
+# .vscode/ - IDE settings (personal)
+# *.pid - Process ID files (runtime only)
+# .env - Environment variables (sensitive data)
+# .idea/ - PyCharm IDE files (personal)
+#
+################################################################################

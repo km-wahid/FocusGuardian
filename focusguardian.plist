@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- LaunchAgent configuration for FocusGuardian macOS website blocker -->
+    <!-- This plist automatically starts the blocker on login and restarts it if it crashes -->
+    
+    <!-- Unique identifier for this LaunchAgent -->
+    <key>Label</key>
+    <string>com.focusguardian.blocker</string>
+    
+    <!-- Program to execute -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python3</string>
+        <string>/Users/khalidmuhammad/Desktop/blocked/blocker.py</string>
+        <string>enable</string>
+    </array>
+    
+    <!-- Run the program at login -->
+    <key>RunAtLoad</key>
+    <true/>
+    
+    <!-- Keep the program running and restart if it crashes -->
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+    </dict>
+    
+    <!-- Standard output logging -->
+    <key>StandardOutPath</key>
+    <string>/tmp/focusguardian.out</string>
+    
+    <!-- Standard error logging -->
+    <key>StandardErrorPath</key>
+    <string>/tmp/focusguardian.err</string>
+    
+    <!-- Work directory -->
+    <key>WorkingDirectory</key>
+    <string>/Users/khalidmuhammad/Desktop/blocked</string>
+    
+    <!-- Environment variables -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>HOME</key>
+        <string>/Users/khalidmuhammad</string>
+    </dict>
+    
+    <!-- Run in background (daemon mode) -->
+    <key>RunInBackground</key>
+    <true/>
+    
+    <!-- Timeout for shutdown (in seconds) -->
+    <key>ExitTimeOut</key>
+    <integer>30</integer>
+    
+    <!-- Throttle the restart frequency to prevent rapid restarts on crash -->
+    <key>ThrottleInterval</key>
+    <integer>5</integer>
+    
+</dict>
+</plist>

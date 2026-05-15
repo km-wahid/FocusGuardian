@@ -1,0 +1,175 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║           🛑 HOW TO TERMINATE/STOP THE SHELL SCRIPT 🛑                   ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+
+═════════════════════════════════════════════════════════════════════════════
+            OPTION 1: STOP SCRIPT (EASIEST - KEYBOARD SHORTCUT)
+═════════════════════════════════════════════════════════════════════════════
+
+If the script is waiting for password or running:
+
+  Press: Ctrl + C
+
+What happens:
+  • Script stops immediately
+  • Web server keeps running (still on port 8080)
+  • You get your terminal prompt back
+
+
+═════════════════════════════════════════════════════════════════════════════
+            OPTION 2: STOP EVERYTHING (SCRIPT + SERVER + BLOCKING)
+═════════════════════════════════════════════════════════════════════════════
+
+Method A - Using the shell script:
+  1. Press: Ctrl + C  (stop current script)
+  2. Run in terminal:
+     ./focusguardian.sh stop
+  
+  This will:
+    ✓ Stop web server
+    ✓ Disable blocking
+    ✓ Clean up everything
+
+
+Method B - Manual cleanup:
+
+  Step 1 - Stop the script:
+    Press: Ctrl + C
+
+  Step 2 - Stop the web server:
+    ps aux | grep local_server
+    (Find the PID number, then:)
+    kill -9 [PIDNUMBER]
+
+  Step 3 - Disable blocking:
+    sudo python3 blocker.py disable
+    (Enter your password)
+
+
+═════════════════════════════════════════════════════════════════════════════
+            OPTION 3: JUST STOP WEB SERVER (KEEP BLOCKING)
+═════════════════════════════════════════════════════════════════════════════
+
+To stop just the server:
+
+  ./focusguardian.sh server-off
+
+OR manually:
+
+  ps aux | grep local_server | grep -v grep
+  kill -9 [PIDNUMBER]
+
+
+═════════════════════════════════════════════════════════════════════════════
+            OPTION 4: JUST DISABLE BLOCKING (KEEP SERVER)
+═════════════════════════════════════════════════════════════════════════════
+
+To keep server but disable blocking:
+
+  ./focusguardian.sh block-off
+
+Then enter password when asked.
+
+
+═════════════════════════════════════════════════════════════════════════════
+                    QUICK REFERENCE TABLE
+═════════════════════════════════════════════════════════════════════════════
+
+WHAT YOU WANT                HOW TO DO IT
+─────────────────────────────────────────────────────────────────────────────
+Stop current script          Press: Ctrl + C
+
+Stop everything              ./focusguardian.sh stop
+
+Stop server only             ps aux | grep local_server
+                             kill -9 [PIDNUMBER]
+
+Disable blocking only        ./focusguardian.sh block-off
+
+Emergency unblock            sudo python3 blocker.py disable
+
+View running processes       ps aux | grep local_server
+
+
+═════════════════════════════════════════════════════════════════════════════
+            🎯 RIGHT NOW - IF YOU WANT TO STOP IT
+═════════════════════════════════════════════════════════════════════════════
+
+In your terminal:
+
+  Press: Ctrl + C
+
+That's it! The script stops.
+
+
+═════════════════════════════════════════════════════════════════════════════
+            💡 WHAT HAPPENS AFTER YOU PRESS Ctrl+C
+═════════════════════════════════════════════════════════════════════════════
+
+Web server: STILL RUNNING (you'll need to stop separately)
+Blocking: NOT ACTIVE (because script didn't complete)
+Terminal: Ready for new commands
+
+
+═════════════════════════════════════════════════════════════════════════════
+            ✨ THEN RUN THIS TO CLEAN UP EVERYTHING
+═════════════════════════════════════════════════════════════════════════════
+
+After pressing Ctrl+C, run:
+
+  ./focusguardian.sh stop
+
+This will:
+  ✓ Stop web server
+  ✓ Disable any blocking
+  ✓ Clean everything up
+
+
+═════════════════════════════════════════════════════════════════════════════
+                    EXAMPLE SCENARIOS
+═════════════════════════════════════════════════════════════════════════════
+
+SCENARIO 1: Script waiting for password, want to cancel
+  1. Press: Ctrl + C
+  2. Done! ✓
+
+SCENARIO 2: Script running, want to stop everything
+  1. Press: Ctrl + C
+  2. Run: ./focusguardian.sh stop
+  3. Done! ✓
+
+SCENARIO 3: Blocking active but need sites immediately
+  1. Press: Ctrl + C
+  2. Run: ./focusguardian.sh block-off
+  3. Sites work normally! ✓
+
+SCENARIO 4: Need complete cleanup
+  1. Press: Ctrl + C
+  2. Run: ./focusguardian.sh stop
+  3. Run: ps aux | grep local_server
+     (check if any still running)
+  4. Done! ✓
+
+
+═════════════════════════════════════════════════════════════════════════════
+                    MOST USEFUL COMMANDS
+═════════════════════════════════════════════════════════════════════════════
+
+KEYBOARD SHORTCUT (ALWAYS WORKS):
+  Ctrl + C
+
+
+SHELL COMMANDS:
+  ./focusguardian.sh stop          Stop everything
+  ./focusguardian.sh block-off     Disable blocking (keep server)
+  ./focusguardian.sh server-off    Stop server (keep blocking)
+
+
+═════════════════════════════════════════════════════════════════════════════
+
+Remember: Ctrl + C is your quickest way to stop anything! 🛑
+
+═════════════════════════════════════════════════════════════════════════════

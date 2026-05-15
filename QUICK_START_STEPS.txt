@@ -1,0 +1,293 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║           🎯 FOCUSGUARDIAN - HOW TO RUN AND USE (STEP BY STEP) 🎯          ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+
+===============================================================================
+                          📍 STEP 1: OPEN TERMINAL
+===============================================================================
+
+What to do:
+  1. Press: Command + Space (Spotlight search)
+  2. Type: "Terminal"
+  3. Press: Enter
+
+You should see:
+  yourname@computer ~ %
+
+
+===============================================================================
+                    📍 STEP 2: GO TO PROJECT FOLDER
+===============================================================================
+
+In terminal, type:
+  cd /Users/khalidmuhammad/Desktop/blocked
+
+You should see:
+  yourname@computer blocked %
+
+
+===============================================================================
+                📍 STEP 3: LIST ALL BLOCKED WEBSITES
+===============================================================================
+
+In terminal, type:
+  cat blocked_sites.txt
+
+You should see:
+  facebook.com
+  www.facebook.com
+  instagram.com
+  www.instagram.com
+  youtube.com
+  www.youtube.com
+  reddit.com
+  www.reddit.com
+  ... (24 total sites)
+
+✅ This shows all sites that will be blocked
+
+
+===============================================================================
+                  📍 STEP 4: START THE REMINDER SERVER
+===============================================================================
+
+In terminal, type:
+  python3 local_server.py
+
+You should see:
+  Starting FocusGuardian reminder server...
+  Server running on http://localhost:8080
+  Press Ctrl+C to stop.
+
+⚠️  DO NOT PRESS ANYTHING - KEEP THIS RUNNING!
+
+
+===============================================================================
+              📍 STEP 5: OPEN A NEW TERMINAL WINDOW
+===============================================================================
+
+What to do:
+  1. Press: Command + T (opens new tab in Terminal)
+  OR
+  2. Press: Command + N (opens new Terminal window)
+
+You should see:
+  A NEW terminal window/tab
+  The first one STILL has the server running
+
+✅ You now have 2 terminal windows
+
+
+===============================================================================
+              📍 STEP 6: TEST WITHOUT BLOCKING (OPTIONAL)
+===============================================================================
+
+In the NEW terminal, type:
+  curl http://localhost:8080
+
+You should see:
+  <!DOCTYPE html>
+  ... (HTML code from reminder page)
+
+✅ This proves the server is working!
+
+To see it in browser:
+  1. Open any web browser (Chrome, Safari, Firefox)
+  2. Go to: http://localhost:8080
+  3. See beautiful reminder page with quote
+
+(Then come back to terminal for next step)
+
+
+===============================================================================
+               📍 STEP 7: ENABLE BLOCKING (THE MAIN COMMAND)
+===============================================================================
+
+In the NEW terminal, type:
+  sudo python3 blocker.py enable
+
+What happens:
+  1. Terminal asks: "Password:"
+  2. Type your Mac password (won't show - that's normal!)
+  3. Press: Enter
+
+You should see:
+  Password: [no visible text as you type]
+  ✅ FocusGuardian enabled successfully
+  Creating backup: /etc/hosts.focusguardian.backup
+  Adding 24 blocked sites to /etc/hosts
+  Blocking is now ACTIVE
+
+⚠️  The first terminal (server) is STILL RUNNING - that's correct!
+
+
+===============================================================================
+                📍 STEP 8: TEST BLOCKING IN YOUR BROWSER
+===============================================================================
+
+Open your web browser and try these:
+
+  1. Go to: youtube.com
+     You should see: Reminder page with motivational quote! ✨
+
+  2. Go to: reddit.com
+     You should see: Reminder page with DIFFERENT quote! 🎲
+
+  3. Go to: facebook.com
+     You should see: Reminder page with another quote! 📝
+
+  4. Refresh youtube.com 5 times
+     You should see: A DIFFERENT quote each time! 🔄
+
+✅ THIS MEANS IT'S WORKING!
+
+  5. Go to: google.com
+     You should see: Normal Google - NOT BLOCKED ✅
+
+
+===============================================================================
+                  📍 STEP 9: CHECK BLOCKING STATUS
+===============================================================================
+
+In terminal, type:
+  python3 blocker.py status
+
+You should see:
+  FocusGuardian Status:
+    Blocking: ENABLED ✅
+    Total blocked sites: 24
+    Blocked domains: facebook.com, www.facebook.com, instagram.com, ...
+
+✅ This proves blocking is active!
+
+
+===============================================================================
+                  📍 STEP 10: DISABLE BLOCKING (WHEN DONE)
+===============================================================================
+
+To turn off blocking:
+
+In terminal, type:
+  sudo python3 blocker.py disable
+
+What happens:
+  1. Terminal asks: "Password:"
+  2. Type your Mac password
+  3. Press: Enter
+
+You should see:
+  Password: [typing]
+  ✅ FocusGuardian disabled
+  Removed blocking entries
+
+Now blocked sites work normally again (youtube.com opens YouTube)
+
+
+===============================================================================
+                    📍 STEP 11: STOP THE WEB SERVER
+===============================================================================
+
+To stop the server:
+
+In the FIRST terminal (where server is running):
+  Press: Ctrl+C
+
+You should see:
+  ^C
+  Server stopped.
+
+✅ Everything is now shut down
+
+
+===============================================================================
+                         📍 ALL DONE! SUMMARY
+===============================================================================
+
+What you learned:
+  ✅ Start the web server: python3 local_server.py
+  ✅ Enable blocking: sudo python3 blocker.py enable
+  ✅ Check status: python3 blocker.py status
+  ✅ Disable blocking: sudo python3 blocker.py disable
+  ✅ Stop server: Press Ctrl+C in server terminal
+
+
+===============================================================================
+                      📋 QUICK COMMAND REFERENCE
+===============================================================================
+
+Command                                    What It Does                Sudo?
+─────────────────────────────────────────────────────────────────────────────
+python3 local_server.py                    Start reminder page server   NO
+sudo python3 blocker.py enable             Turn ON blocking            YES
+sudo python3 blocker.py disable            Turn OFF blocking           YES
+sudo python3 blocker.py reload             Reload after editing file   YES
+python3 blocker.py status                  Check if blocking is ON      NO
+sudo python3 blocker.py restore            Restore original /etc/hosts YES
+
+
+===============================================================================
+                           🆘 QUICK FIXES
+===============================================================================
+
+PROBLEM: "Port 8080 already in use"
+FIX:     lsof -i :8080
+         kill -9 [NUMBER]
+         python3 local_server.py
+
+PROBLEM: "Permission denied" or error
+FIX:     Make sure you used: sudo python3 blocker.py enable
+         Don't forget the "sudo" part!
+
+PROBLEM: Sites not blocked after enabling
+FIX:     1. Wait 5 seconds
+         2. Refresh browser
+         3. Try: sudo python3 blocker.py disable
+         4. Then: sudo python3 blocker.py enable
+
+PROBLEM: Can't see reminder page in browser
+FIX:     1. Make sure server is running (first terminal)
+         2. Go to: http://localhost:8080
+         3. Try different site: youtube.com
+
+PROBLEM: Want to unblock everything
+FIX:     sudo python3 blocker.py disable
+         (All sites work normally)
+
+
+===============================================================================
+                          🎯 TYPICAL DAILY USE
+===============================================================================
+
+MORNING - Start Focusing:
+  1. Open Terminal
+  2. cd /Users/khalidmuhammad/Desktop/blocked
+  3. python3 local_server.py
+  4. Open new terminal
+  5. sudo python3 blocker.py enable
+  6. Done! Stay focused! 🎯
+
+DURING DAY - Check Status:
+  python3 blocker.py status
+
+END OF DAY - Stop Blocking:
+  sudo python3 blocker.py disable
+  (Press Ctrl+C in server terminal)
+
+
+===============================================================================
+                         ✨ YOU'RE ALL SET! ✨
+===============================================================================
+
+The system is ready to use!
+
+Just follow the steps above and you'll have a working website blocker
+that redirects distracting sites to motivational reminder pages.
+
+Any questions? Check HOW_TO_USE.md for detailed help.
+
+Good luck focusing! 🚀
+
+═══════════════════════════════════════════════════════════════════════════════

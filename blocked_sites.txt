@@ -1,0 +1,40 @@
+# FocusGuardian Blocked Sites Configuration
+# Add one domain per line (without http:// or https://)
+# The blocker will automatically add www. variants
+# Comments start with # and are ignored
+
+# Social Media (Primary)
+facebook.com
+instagram.com
+twitter.com
+reddit.com
+tiktok.com
+snapchat.com
+
+# Video Streaming
+youtube.com
+netflix.com
+hulu.com
+disneyplus.com
+twitch.tv
+
+# News & Feeds
+cnn.com
+bbc.com
+news.ycombinator.com
+medium.com
+dev.to
+
+# Time Wasters
+imgur.com
+9gag.com
+buzzfeed.com
+pinterest.com
+tumblr.com
+
+# Shopping
+amazon.com
+ebay.com
+alibaba.com
+
+# Add your custom blocked sites below:
